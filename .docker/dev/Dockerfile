@@ -8,21 +8,20 @@ LABEL Jorge Rodrigues <jorgerodrigues9@outlook.com>
 #    echo "http://dl-cdn.alpinelinux.org/alpine/community" >> /etc/apk/repositories
 
 # Add Build Dependencies
-#RUN apk add --no-cache --virtual .build-deps \
-#RUN apk add \
-#    icu-dev \
-#    libxml2-dev \
-#    freetype-dev \
-#    zlib-dev \
-#    libjpeg-turbo-dev \
-#    libpng-dev \
-#    libwebp-dev \
-#    libzip-dev \
-#    libonig-dev \
-#    bzip2-dev \
-#    curl-dev \
-#    nodejs \
-#    npm
+RUN apk add --no-cache --virtual .build-deps \
+    icu-dev \
+    libxml2-dev \
+    freetype-dev \
+    zlib-dev \
+    libjpeg-turbo-dev \
+    libpng-dev \
+    libwebp-dev \
+    libzip-dev \
+    #libonig-dev \
+    bzip2-dev \
+    curl-dev \
+    nodejs \
+    npm
 
 # Add Production Dependencies
 RUN apk add --update --no-cache \
@@ -30,8 +29,9 @@ RUN apk add --update --no-cache \
 
 
 # Configure & Install Extension
-RUN docker-php-ext-configure gd --with-jpeg=/usr/include/ --with-freetype=/usr/include/ &&\
-    docker-php-ext-install \
+RUN docker-php-ext-configure gd --with-jpeg=/usr/include/ --with-freetype=/usr/include/
+
+RUN docker-php-ext-install \
     mysqli \
     pdo \
     pdo_mysql \
@@ -40,13 +40,12 @@ RUN docker-php-ext-configure gd --with-jpeg=/usr/include/ --with-freetype=/usr/i
     gd \
     xml \
     zip \
-    curl \
-    mbstring
+    curl 
 
 # Add Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-#ENV COMPOSER_ALLOW_SUPERUSER=1
-#ENV PATH="./vendor/bin:$PATH"
+ENV COMPOSER_ALLOW_SUPERUSER=1
+ENV PATH="./vendor/bin:$PATH"
 
 # Setup Crond and Supervisor by default
 RUN echo '*  *  *  *  * /usr/local/bin/php  /var/www/artisan schedule:run >> /dev/null 2>&1' > /etc/crontabs/root
