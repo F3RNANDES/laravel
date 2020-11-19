@@ -1,10 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\NameController;
-use App\Http\Controllers\ProdutosController;
-
+use App\Http\Controllers\CatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +17,10 @@ use App\Http\Controllers\ProdutosController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Rota para listagem dos dados
+Route::get('cat', [CatController::class, 'index']);
+
+// Rotas para criação dos dados
+Route::get('cat/create', [CatController::class, 'create'])->name('cat.create');
+Route::post('cat', [CatController::class, 'store'])->name('cat.store');
