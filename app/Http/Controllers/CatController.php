@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cat;
 
 class CatController extends Controller
 {
@@ -13,7 +14,9 @@ class CatController extends Controller
      */
     public function index()
     {
-        //
+        $cats = Cat::all();
+
+        return view('cat.index', ['cats' =>$cats]);
     }
 
     /**
@@ -23,7 +26,7 @@ class CatController extends Controller
      */
     public function create()
     {
-        //
+        return view('cat.create');
     }
 
     /**
@@ -34,7 +37,24 @@ class CatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cat = new Cat();
+
+        $cat->name = $request-> name;
+        $cat->age = $request-> age;
+        $cat->race = $request-> race;
+        $cat->color = $request-> color;
+        $cat->price = $request-> price;
+        $cat->sold = $request-> sold;
+
+        if ($cat->save()) {
+            return redirect()
+                ->back()
+                ->with('message', 'Gato adicionado com sucesso!');
+        }return redirect()
+        ->back()
+        ->with('message', 'Não foi possível adicionar o gato!');
+
+
     }
 
     /**
