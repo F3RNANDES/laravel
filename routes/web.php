@@ -41,6 +41,10 @@ Route::get('dog',[DogController::class,'index']);
 Route::get('dog/create',[DogController::class,'create'])->name('dog.create');
 Route::post('dog',[DogController::class, 'store'])->name('dog.store');
 
+//Rota de metodo get pegando dog id para o DogController
+Route::get('dog/{id}',[DogController::class,'edit'])->name('dog.edit');
+//Rota de metodo put para salvar as mudanças feitas em edit.
+Route::put('dog/{id}',[DogController::class,'update'])->name('dog.update');
 
 //Rota para deletar cachorro
 //Rota do controlador delete passando o parametro do id de dog informado que essa rota terá o nome de 'dog.destroy'

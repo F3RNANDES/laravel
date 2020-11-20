@@ -25,6 +25,10 @@
             <td> {{$dog->color}}</td>
             <td> {{$dog->price}}</td>
             <td> {{$dog->sold}}</td>
+            <!-- Link criado com a rota dog.edit para editar cachorro -->
+            <td>
+                <a href="{{route("dog.edit",$dog->id)}}">Eiditar</a>
+            </td>
 
             <!--Criado um formulario que utiliza o metodo post com uma ação na rota de dog.destroy passando o id de dog
             csrf -->

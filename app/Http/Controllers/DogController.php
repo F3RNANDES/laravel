@@ -73,9 +73,12 @@ class DogController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
+    //Função edit procurando o id de cachorro procure o id de $dog na model(banco)Dog ou falhe
+    //se achar id retorne a view do dog.edit. ['dog'=>$dog]?
     public function edit($id)
     {
-        //
+        $dog = Dog::findOrFail($id);
+        return view('dog.edit', ['dog'=>$dog]);
     }
 
     /**
@@ -87,7 +90,24 @@ class DogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dog = Dog::findOrfail($id);
+
+        $dog->name = $request->name;
+        $dog->age = $request->age;
+        $dog->race = $request->race;
+        $dog->color = $request->color;
+        $dog->price = $request->price;
+        $dog->sold = $request->sold;
+
+        if($dog->update())
+        {
+            return redirect()
+                ->back()
+                ->with('message', 'Cachorro atualizado com sucesso!');
+        }
+        return redirect()
+            ->back()
+            ->with('message','Não foi poassivel atualizar!');
     }
 
     /**
