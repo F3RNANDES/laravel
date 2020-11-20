@@ -1,6 +1,7 @@
 <html>
 <head>
 <body>
+
 <form action="{{route('dog.store')}}" method="post">
     @csrf
 
@@ -27,7 +28,8 @@
 
     <br>
     <button>SALVAR</button>
-
+    <br>
+    <a href="{{route("dog.store")}}">VER LISTA DE CÃES</a>
 
     @if(session()->has('message'))
         <br/>

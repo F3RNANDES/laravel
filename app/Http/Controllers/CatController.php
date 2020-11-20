@@ -16,7 +16,7 @@ class CatController extends Controller
     {
         $cats = Cat::all();
 
-        return view('cat.index', ['cats' =>$cats]);
+        return view('cat.index', ['cats' => $cats]);
     }
 
     /**
@@ -32,27 +32,28 @@ class CatController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $cat = new Cat();
 
-        $cat->name = $request-> name;
-        $cat->age = $request-> age;
-        $cat->race = $request-> race;
-        $cat->color = $request-> color;
-        $cat->price = $request-> price;
-        $cat->sold = $request-> sold;
+        $cat->name = $request->name;
+        $cat->age = $request->age;
+        $cat->race = $request->race;
+        $cat->color = $request->color;
+        $cat->price = $request->price;
+        $cat->sold = $request->sold;
 
         if ($cat->save()) {
             return redirect()
                 ->back()
                 ->with('message', 'Gato adicionado com sucesso!');
-        }return redirect()
-        ->back()
-        ->with('message', 'Não foi possível adicionar o gato!');
+        }
+        return redirect()
+            ->back()
+            ->with('message', 'Não foi possível adicionar o gato!');
 
 
     }
@@ -60,7 +61,7 @@ class CatController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -71,34 +72,57 @@ class CatController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $cat = Cat::findOrfail($id);
+        return view('cat.edit', ['cat' => $cat]);
+
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $cat = Cat::findOrFail($id);
+
+        $cat->name = $request->name;
+        $cat->age = $request->age;
+        $cat->race = $request->race;
+        $cat->color = $request->color;
+        $cat->price = $request->price;
+        $cat->sold = $request->sold;
+
+        if ($cat->update()) {
+            return redirect()
+                ->back()
+                ->with('message', 'Gato atualizado com sucesso!');
+        }
+        return redirect()
+            ->back()
+            ->with('message', 'Não foi possível atualizar o gato!');
+
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $cat = Cat::findOrfail($id);
+        $cat->delete();
+
+        return redirect()->back();
     }
 }
