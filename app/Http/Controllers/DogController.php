@@ -96,8 +96,14 @@ class DogController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
+    //função de deletar o cachorro
+    //função destroy procura o id selecionado, se achar na model Dog o id selecionado
+    //logo dog selecionado será deletado e após deletado voltara a mesma tela.
+
     public function destroy($id)
     {
-        //
+        $dog = Dog::findOrfail($id);
+        $dog->delete();
+        return redirect()->back();
     }
 }

@@ -26,7 +26,17 @@
             <td> {{$dog->price}}</td>
             <td> {{$dog->sold}}</td>
 
+            <!--Criado um formulario que utiliza o metodo post com uma ação na rota de dog.destroy passando o id de dog
+            csrf -->
+            <td>
+                <form method="post" action="{{route("dog.destroy",$dog->id)}}">
+                    @csrf
+                    @method('delete')
+                    <button type="submit">Deletar</button>
+                </form>
+            </td>
         </tr>
+
     @endforeach
     </tbody>
 </table>

@@ -34,7 +34,14 @@ Route::put('cat/{id}',[CatController::class,'update'])->name('cat.update');
 //Rota para deletar os gatos
 Route::delete('cat/{id}',[CatController::class, 'destroy'])->name('cat.destroy');
 
-
+//Rota para listagem de cachorros existentes.
 Route::get('dog',[DogController::class,'index']);
+
+//Rota para criar cachorro na tabela
 Route::get('dog/create',[DogController::class,'create'])->name('dog.create');
 Route::post('dog',[DogController::class, 'store'])->name('dog.store');
+
+
+//Rota para deletar cachorro
+//Rota do controlador delete passando o parametro do id de dog informado que essa rota terá o nome de 'dog.destroy'
+Route::delete('dog/{id}',[DogController::class, 'destroy'])->name('dog.destroy');
