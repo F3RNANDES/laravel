@@ -73,11 +73,13 @@ class CatController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function edit($id)
     {
-        //
+        $cat = Cat::findOrFail($id);
+
+        return view('cat.edit', ['cat' => $cat]);
     }
 
     /**
@@ -89,17 +91,38 @@ class CatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cat = Cat::findOrFail($id);
+
+        $cat->name = $request->name;
+        $cat->age = $request->age;
+        $cat->race = $request->race;
+        $cat->color = $request->color;
+        $cat->price = $request->price;
+        $cat->sold = $request->sold;
+
+        if ($cat->update()) {
+            return redirect()
+                ->back()
+                ->with('message', 'Gato atualizado com sucesso!');
+        }
+
+        return redirect()
+            ->back()
+            ->with('message', 'Não foi possível atualizar o gato!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $cat = Cat::findOrFail($id);
+
+        $cat->delete();
+
+        return redirect()->back();
     }
 }

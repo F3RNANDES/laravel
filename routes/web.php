@@ -24,3 +24,10 @@ Route::get('cat', [CatController::class, 'index']);
 // Rotas para criação dos dados
 Route::get('cat/create', [CatController::class, 'create'])->name('cat.create');
 Route::post('cat', [CatController::class, 'store'])->name('cat.store');
+
+// Rotas para atualização dos dados
+Route::get('cat/{id}', [CatController::class, 'edit'])->name('cat.edit');
+Route::put('cat/{id}', [CatController::class, 'update'])->name('cat.update');
+
+// Rota para remoção dos dados
+Route::delete('cat/{id}', [CatController::class, 'destroy'])->name('cat.destroy');
