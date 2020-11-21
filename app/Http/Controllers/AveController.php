@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cat;
 use Illuminate\Http\Request;
 use App\Models\Ave;
 
@@ -26,7 +27,7 @@ class AveController extends Controller
      */
     public function create()
     {
-        //
+        return view('ave.create');
     }
 
     /**
@@ -37,7 +38,25 @@ class AveController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ave = new Ave();
+
+        $ave->name = $request->name;
+        $ave->age = $request->age;
+        $ave->race = $request->race;
+        $ave->color = $request->color;
+        $ave->price = $request->price;
+        $ave->sold = $request->sold;
+
+        if ($ave->save()) {
+            return redirect()
+                ->back()
+                ->with('message', 'Ave adicionado com sucesso!');
+        }
+        return redirect()
+            ->back()
+            ->with('message', 'Não foi possível adicionar a Ave!');
+
+
     }
 
     /**

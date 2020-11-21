@@ -53,4 +53,8 @@ Route::put('dog/{id}',[DogController::class,'update'])->name('dog.update');
 Route::delete('dog/{id}',[DogController::class, 'destroy'])->name('dog.destroy');
 
 //Listagem Aves
-Route::get('ave',[AveController::class,'index']);
+Route::get('ave',[AveController::class,'index'])->name('ave.list');
+
+//Criar ave
+Route::get('ave/create',[AveController::class,'create'])->name('ave.create');
+Route::post('ave',[AveController::class,'store'])->name('ave.store');

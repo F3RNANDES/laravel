@@ -2,6 +2,8 @@
 <head></head>
 <body>
 <h1>Todas aves</h1>
+<a href="{{route("ave.create")}}">CRIAR NOVA AVE</a>
+
 <table>
     <tread>
         <tr>

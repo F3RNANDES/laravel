@@ -1,24 +1,23 @@
 <html>
 <head>
 <body>
-
-<form action="{{route('cat.store')}}" method="post">
+<form action="{{route('ave.store')}}" method="post">
     @csrf
 
     <label for="name">Nome:</label>
-    <input id="name" type="text" name="name" placeholder="Digite o nome do gato"/>
+    <input id="name" type="text" name="name" placeholder="Digite o nome da ave"/>
     <br>
     <label for="age">idade:</label>
-    <input id="age" type="text" name="age" placeholder="Digite a idade do gato"/>
+    <input id="age" type="text" name="age" placeholder="Digite a idade da ave"/>
     <br>
     <label for="race">raça:</label>
-    <input id="race" type="text" name="race" placeholder="Digite a raça do gato"/>
+    <input id="race" type="text" name="race" placeholder="Digite a raça da ave"/>
     <br>
     <label for="color">cor:</label>
-    <input id="color" type="text" name="color" placeholder="Digite a cor do gato"/>
+    <input id="color" type="text" name="color" placeholder="Digite a cor da ave"/>
     <br>
     <label for="price">preço:</label>
-    <input id="price" type="text" name="price" placeholder="Digite o preço do gato"/>
+    <input id="price" type="text" name="price" placeholder="Digite o preço da ave"/>
     <br>
     <label for="sold">Vendido</label>
     <select name="sold" id="sold">
@@ -36,6 +35,7 @@
         <h4>{{session()->get('message')}}</h4>
     @endif
 </form>
+<a href="{{route('ave.list')}}">Listas de aves</a>
 </body>
 </head>
 </html>
