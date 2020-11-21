@@ -6,6 +6,8 @@ use App\Http\Controllers\CatController;
 
 use App\Http\Controllers\DogController;
 
+use App\Http\Controllers\AveController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,3 +51,6 @@ Route::put('dog/{id}',[DogController::class,'update'])->name('dog.update');
 //Rota para deletar cachorro
 //Rota do controlador delete passando o parametro do id de dog informado que essa rota terá o nome de 'dog.destroy'
 Route::delete('dog/{id}',[DogController::class, 'destroy'])->name('dog.destroy');
+
+//Listagem Aves
+Route::get('ave',[AveController::class,'index']);
