@@ -78,7 +78,8 @@ class AveController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ave = Ave::findOrfail($id);
+        return view('ave.edit', ['ave' => $ave]);
     }
 
     /**
@@ -90,7 +91,23 @@ class AveController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ave = Ave::findOrFail($id);
+
+        $ave->name = $request->name;
+        $ave->age = $request->age;
+        $ave->race = $request->race;
+        $ave->color = $request->color;
+        $ave->price = $request->price;
+        $ave->sold = $request->sold;
+
+        if ($ave->update()) {
+            return redirect()
+                ->back()
+                ->with('message', 'Gato atualizado com sucesso!');
+        }
+        return redirect()
+            ->back()
+            ->with('message', 'Não foi possível atualizar o gato!');
     }
 
     /**
@@ -101,6 +118,9 @@ class AveController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ave = Ave::findOrfail($id);
+        $ave->delete();
+
+        return redirect()->back();
     }
 }

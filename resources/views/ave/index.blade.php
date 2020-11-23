@@ -25,6 +25,17 @@
             <td>{{$ave->color}}</td>
             <td>{{$ave->price}}</td>
             <td>{{$ave->sold}}</td>
+            <td>
+                <a href="{{route("ave.edit",$ave->id)}}">Editar</a>
+            </td>
+            <td>
+                <form method="post" action="{{route("ave.destroy",$ave->id)}}">
+                    @csrf
+                    @method('delete')
+                    <button type="submit">Deletar</button>
+                </form>
+            </td>
+        </tr>
         </tr>
     @endforeach
     </tbody>
