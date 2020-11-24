@@ -22,6 +22,7 @@ use App\Http\Controllers\AveController;
 Route::get('/', function () {
     return view('welcome');
 });
+
 // Rota para listagem dos gatos
 Route::get('cat',[CatController::class, 'index']);
 
@@ -35,6 +36,10 @@ Route::put('cat/{id}',[CatController::class,'update'])->name('cat.update');
 
 //Rota para deletar os gatos
 Route::delete('cat/{id}',[CatController::class, 'destroy'])->name('cat.destroy');
+
+
+//----------------------------------------------
+
 
 //Rota para listagem de cachorros existentes.
 Route::get('dog',[DogController::class,'index']);
@@ -52,6 +57,11 @@ Route::put('dog/{id}',[DogController::class,'update'])->name('dog.update');
 //Rota do controlador delete passando o parametro do id de dog informado que essa rota terá o nome de 'dog.destroy'
 Route::delete('dog/{id}',[DogController::class, 'destroy'])->name('dog.destroy');
 
+
+//----------------------------------------------------
+
+
+
 //List Aves
 Route::get('ave',[AveController::class,'index'])->name('ave.list');
 
@@ -60,8 +70,8 @@ Route::get('ave/create',[AveController::class,'create'])->name('ave.create');
 Route::post('ave',[AveController::class,'store'])->name('ave.store');
 
 //edit ave
-Route::get('ave/{id}',[CatController::class,'edit'])->name('ave.edit');
-Route::put('ave/{id}',[CatController::class,'update'])->name('ave.update');
+Route::get('ave/{id}',[AveController::class,'edit'])->name('ave.edit');
+Route::put('ave/{id}',[AveController::class,'update'])->name('ave.update');
 
 //delete ave
 Route::delete('ave/{id}',[AveController::class, 'destroy'])->name('ave.destroy');

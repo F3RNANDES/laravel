@@ -19,7 +19,7 @@ class CreateCatsTable extends Migration
             $table->integer('age');
             $table->string('race');
             $table->string('color');
-            $table->float('price');
+            $table->float('price')->nullable();
             $table->boolean('sold');
             $table->timestamps();
         });

@@ -37,6 +37,13 @@ class CatController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|unique:cats|max:36',
+            'age' => 'required|max:3',
+            'price' => 'nullable',
+        ]);
+
+
         $cat = new Cat();
 
         $cat->name = $request->name;
