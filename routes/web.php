@@ -8,6 +8,8 @@ use App\Http\Controllers\DogController;
 
 use App\Http\Controllers\AveController;
 
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -78,3 +80,10 @@ Route::delete('ave/{id}',[AveController::class, 'destroy'])->name('ave.destroy')
 
 
 // ------------------------------------------------------------------------------------
+//
+//Home users
+Route::post('user',[UserController::class,'index']);
+
+// Create user
+Route::get('user/create',[UserController::class,'create'])->name('user.create');
+Route::post('user',[UserController::class,'store'])->name('user.store');
