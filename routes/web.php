@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 // Rota para listagem dos gatos
-Route::get('cat',[CatController::class, 'index']);
+Route::get('cat',[CatController::class, 'index'])->name('cat.index');
 
 //Rota para criar os gatos
 Route::get('cat/create', [CatController::class, 'create'])->name('cat.create');
@@ -54,7 +54,7 @@ Route::get('dog/{id}',[DogController::class,'edit'])->name('dog.edit');
 Route::put('dog/{id}',[DogController::class,'update'])->name('dog.update');
 
 //Rota para deletar cachorro
-//Rota do controlador delete passando o parametro do id de dog informado que essa rota terá o nome de 'dog.destroy'
+//Rota do controlador delete passando o parametro do id de dog informado que    essa rota terá o nome de 'dog.destroy'
 Route::delete('dog/{id}',[DogController::class, 'destroy'])->name('dog.destroy');
 
 
@@ -75,3 +75,6 @@ Route::put('ave/{id}',[AveController::class,'update'])->name('ave.update');
 
 //delete ave
 Route::delete('ave/{id}',[AveController::class, 'destroy'])->name('ave.destroy');
+
+
+// ------------------------------------------------------------------------------------

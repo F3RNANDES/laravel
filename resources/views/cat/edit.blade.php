@@ -40,6 +40,10 @@
         <h4>{{session()->get('message')}}</h4>
     @endif
 </form>
+<a href="{{route("cat.index")}}">LISTA DE GATOS</a>
+
+<br>
+<a href="{{route("cat.create")}}">CRIAR NOVO GATO</a>
 
 </body>
 </head>

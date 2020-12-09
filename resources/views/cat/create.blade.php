@@ -1,7 +1,6 @@
 <html>
 <head>
 <body>
-
 <form action="{{route('cat.store')}}" method="post">
     @csrf
 
@@ -25,6 +24,7 @@
         <option value="1" {{old('sold')== 1 ? 'selected':''}} >VENDIDO</option>
         <option value="0" {{old('sold')== 0 ? 'selected':''}}>NÃO VENDIDO</option>
     </select>
+    <br>
 
     <br>
     <button>SALVAR</button>
@@ -44,6 +44,7 @@
         <h4>{{session()->get('message')}}</h4>
     @endif
 </form>
+<a href="{{route("cat.index")}}">LISTA DE GATOS</a>
 </body>
 </head>
 </html>
