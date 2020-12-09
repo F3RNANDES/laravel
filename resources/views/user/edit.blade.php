@@ -23,7 +23,10 @@
         <h4>{{session()->get('message')}}</h4>
     @endif
 </form>
+<a href="{{route("user.home")}}">LISTA DE USUARIOS</a>
 
+<br>
+<a href="{{route("user.create")}}">CRIAR NOVO USUARIO</a>
 </body>
 </head>
 </html>

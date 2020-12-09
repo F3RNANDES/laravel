@@ -1,7 +1,7 @@
 <html>
 <head></head>
 <body>
-<h1>Todas aves</h1>
+<h1>Todos os usuarios</h1>
 <a href="{{route("user.create")}}">CRIAR NOVO USUARIO</a>
 
 <table>
