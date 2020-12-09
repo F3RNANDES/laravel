@@ -77,7 +77,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+
+
+        $user = User::findOrfail($id);
+        return view('user.edit', ['user' => $user]);
     }
 
     /**
@@ -89,7 +92,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrfail($id);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        if ($user->update()) {
+            return redirect()
+                ->back()
+                ->with('message', 'Usuario atualizado com sucesso!');
+        }
+        return redirect()
+            ->back()
+            ->with('message', 'Não foi possível atualizar o usuario!');
     }
 
     /**
@@ -100,6 +115,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrfail($id);
+        $user->delete();
+
+        return redirect()->back();
     }
 }

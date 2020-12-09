@@ -103,11 +103,11 @@ class AveController extends Controller
         if ($ave->update()) {
             return redirect()
                 ->back()
-                ->with('message', 'Gato atualizado com sucesso!');
+                ->with('message', 'AVE atualizado com sucesso!');
         }
         return redirect()
             ->back()
-            ->with('message', 'Não foi possível atualizar o gato!');
+            ->with('message', 'Não foi possível atualizar A AVE!');
     }
 
     /**

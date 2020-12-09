@@ -59,10 +59,7 @@ Route::put('dog/{id}',[DogController::class,'update'])->name('dog.update');
 //Rota do controlador delete passando o parametro do id de dog informado que    essa rota terá o nome de 'dog.destroy'
 Route::delete('dog/{id}',[DogController::class, 'destroy'])->name('dog.destroy');
 
-
 //----------------------------------------------------
-
-
 
 //List Aves
 Route::get('ave',[AveController::class,'index'])->name('ave.list');
@@ -78,12 +75,17 @@ Route::put('ave/{id}',[AveController::class,'update'])->name('ave.update');
 //delete ave
 Route::delete('ave/{id}',[AveController::class, 'destroy'])->name('ave.destroy');
 
-
+//
 // ------------------------------------------------------------------------------------
 //
-//Home users
-Route::post('user',[UserController::class,'index']);
 
+//Home users
+Route::get('user',[UserController::class,'index'])->name('user.home');
 // Create user
 Route::get('user/create',[UserController::class,'create'])->name('user.create');
 Route::post('user',[UserController::class,'store'])->name('user.store');
+//Edit User
+Route::get('user/{id}',[UserController::class,'edit'])->name('user.edit');
+Route::put('user/{id}',[UserController::class,'update'])->name('user.update');
+//Delete user
+Route::delete('user/{id}',[UserController::class,'destroy'])->name('user.destroy');

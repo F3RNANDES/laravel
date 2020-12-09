@@ -24,9 +24,9 @@
     @endif
 
 </form>
-<!--
-<a href="{{route('ave.list')}}">Listas de aves</a>
--->
+
+<a href="{{route('user.home')}}">Listas de users</a>
+
 </body>
 </head>
 </html>

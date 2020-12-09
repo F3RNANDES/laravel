@@ -15,16 +15,16 @@
         </tr>
     </tread>
     <tbody>
-    @foreach($aves as $ave)
+    @foreach($user as $user)
         <tr>
-            <td>{{$ave->name}}</td>
-            <td>{{$ave->email}}</td>
-            <td>{{$ave->senha}}</td>
+            <td>{{$user->name}}</td>
+            <td>{{$user->email}}</td>
+            <td>{{$user->senha}}</td>
             <td>
-                <a href="{{route("ave.edit",$ave->id)}}">Editar</a>
+                <a href="{{route("user.edit",$user->id)}}">Editar</a>
             </td>
             <td>
-                <form method="post" action="{{route("ave.destroy",$ave->id)}}">
+                <form method="post" action="{{route("user.destroy",$user->id)}}">
                     @csrf
                     @method('delete')
                     <button type="submit">Deletar</button>
